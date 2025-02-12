@@ -1,8 +1,11 @@
 const apiKey = "d3e27ab0870547137c7a08aa4a1f0dc8";
-const apiUrl= "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=Nairobi";
+const apiUrl= "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 
-async function checkWeather(){
-    const response = await fetch(apiUrl + `&appid=${apiKey}`)
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+
+async function checkWeather(city){
+    const response = await fetch(apiUrl + city +`&appid=${apiKey}`)
     var data = await response.json();
 
     console.log(data);
