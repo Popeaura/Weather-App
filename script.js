@@ -35,7 +35,7 @@ async function checkWeather(city) {
         weatherIcon.src = "images/default.png"; // Default image if no match
     }
 
-    document.querySelector(".weather").computedStyleMap.display = "block"
+    document.querySelector(".weather").style.display = "block";
 }
 
 searchBtn.addEventListener("click", () => {
