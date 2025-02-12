@@ -7,21 +7,16 @@ const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-    var data = await response.json(); // ✅ Now `data` is defined before use
+    var data = await response.json();
 
-    if (response.status == 404) {
-        document.querySelector(".error").style.display = "block";
-        document.querySelector(".weather").style.display = "none";
-        return; // ✅ Stop execution if city is not found
-    }
+    console.log(data);
 
-    // ✅ Populate weather data
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 
-    // ✅ Fixing weather condition matching
+    // Fixing weather condition matching
     let weatherCondition = data.weather[0].main;
 
     if (weatherCondition === "Clouds") {
@@ -39,10 +34,6 @@ async function checkWeather(city) {
     } else {
         weatherIcon.src = "images/default.png"; // Default image if no match
     }
-
-    // ✅ Show weather data and hide error message
-    document.querySelector(".weather").style.display = "block";
-    document.querySelector(".error").style.display = "none";
 }
 
 searchBtn.addEventListener("click", () => {
