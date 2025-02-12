@@ -89,3 +89,6 @@ margin-top: 30px;
     font-size: 28px;
     margin-top: -6px;
 }
+.weather{
+    display: none;
+}

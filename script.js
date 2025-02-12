@@ -9,7 +9,7 @@ async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     var data = await response.json();
 
-    console.log(data);
+ 
 
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
@@ -34,6 +34,8 @@ async function checkWeather(city) {
     } else {
         weatherIcon.src = "images/default.png"; // Default image if no match
     }
+
+    document.querySelector(".weather").computedStyleMap.display = "block"
 }
 
 searchBtn.addEventListener("click", () => {
